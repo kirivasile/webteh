@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} 
+Signup
+{% endblock %}
+
+{% block column_header %}
+<div class="page-header">
+		<div class="row">
+			<div class="col-md-5" style="text-align: center;">
+				<span class="header-name">
+					<h1>Sign up</h1>
+				</span>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8">
+	<form class="form-horizontal">
+		<fieldset>
+			<div class="alert alert-dismissible alert-danger">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					Sorry, this email has already registered!
+				</div>
+				<div class="form-group">
+			    <label for="inputLogin" class="col-md-3 control-label"><h4>Login</h4></label>
+			    <div class="col-md-8">
+			    	<input type="text" class="form-control inputInfo" id="inputLogin" placeholder="Login">
+			    </div>
+		    </div>
+		    <div class="form-group has-error">
+			    <label for="inputEmail" class="col-md-3 control-label"><h4>Email</h4></label>
+			    <div class="col-md-8">
+			    	<input type="text" class="form-control inputInfo" id="inputEmail" placeholder="Email">
+			    </div>
+		    </div>
+		    <div class="form-group">
+			    <label for="inputNick" class="col-md-3 control-label"><h4>NickName</h4></label>
+			    <div class="col-md-8">
+			    	<input type="text" class="form-control inputInfo" id="inputNick" placeholder="NickName">
+			    </div>
+		    </div>
+		    <div class="form-group">
+			    <label for="inputPassword" class="col-md-3 control-label"><h4>Password</h4></label>
+			    <div class="col-md-8">
+			    	<input type="password" class="form-control inputInfo" id="inputPassword" placeholder="Password">
+			    </div>
+		    </div>
+		    <div class="form-group">
+			    <label for="inputPassword" class="col-md-3 control-label"><h4>Repeat password</h4></label>
+			    <div class="col-md-8">
+			    	<input type="password" class="form-control inputInfo" id="inputPassword" placeholder="Password">
+			    </div>
+		    </div>
+		    <div class="form-group">
+			    <label for="uploadAvatar" class="col-md-3 control-label"><h4>Upload avatar</h4></label>
+			    <div class="col-md-8">
+			    	<input type="file" class="file inputInfo btn btn-default" id="uploadAvatar">
+			    </div>
+			</div>
+		</fieldset>
+	</form>
+	<div class="col-md-8 col-md-offset-3">
+		<span><a href="#" class="btn btn-default">Cancel</a></span>
+		<span><a href="#" class="btn btn-primary">Sign up</a></span>
+	</div>
+	<div class="col-md-8 col-md-offset-3" id="dont-have-account">
+		<span><a href="#">Dont have an account?</a></span>
+	</div>
+</div>
+{% endblock %}

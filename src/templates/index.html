@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}
+	AskInternet
+{% endblock %}
+
+{% block navbar %}
+{% if request.user.is_authenticated %}
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	<form class="navbar-form navbar-left" role="search">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Ask">
+		</div>
+		<button type="submit" class="btn btn-default">Ask</button>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="#"><font size="4">{{ request.user.username }}</font></a></li>
+		<li><a href="#"><font size="4">Settings</font></a></li>
+		<li><a href="auth/logout/"><font size="4">Log out</font></a></li>
+	</ul>
+</div>
+{% else %}
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	<form class="navbar-form navbar-left" role="search">
+		<div class="form-group">
+  			<input type="text" class="form-control" placeholder="Search">
+		</div>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="#"><font size="4">Sign up</font></a></li>
+		<li><a href="/login/"><font size="4">Log in</font></a></li>
+	</ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block column_header %}
+<!-- Columns header -->
+<div class="page-header">
+	<div class="row">
+		<div class="col-md-5" style="text-align: right;">
+			<span class="header-name">
+				<h1>New Questions</h1>
+			</span>
+			<span class="header-name">
+				<a href="#"><h4>Hot Questions</h4></a>
+			</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block body %}
+<!-- Questions -->
+<div class="col-md-8">
+	<div class="panel panel-primary">
+		<div class="panel-body fixed-panel">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#" class="thumbnail fixed-thumbnail">
+						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
+					</a>
+					<div><a href="#"><h4>Mr.Red</h4></a></div>
+					<ul class="nav nav-tabs">
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+					    <a class="btn btn-default">0</a>
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-primary fixed-question-panel">
+						<div class="panel-heading">
+							<a href="/question/" style="color: white;">What is the differences between templates and generics?</a>
+						</div>
+						<div class="panel-body">
+							Hi! There is templates in C++, and Generics in Java. They do simillar things, but what is the difference..
+						</div>
+					</div>
+					<span>
+						<a href="#" class="btn btn-primary" type="button">
+							Answers <span class="badge">3</span>
+						</a>
+						<span class="tag-list">
+							<ul class="list-inline">
+								<li>Tags:</li>
+								<li><a href="#">Java</a></li>
+								<li><a href="#">C++</a></li>
+								<li><a href="#">Templates</a></li>
+								<li><a href="#">Generics</a></li>
+							</ul>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-body fixed-panel">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#" class="thumbnail fixed-thumbnail">
+						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
+					</a>
+					<div><a href="#"><h4>Mr.Red</h4></a></div>
+					<ul class="nav nav-tabs">
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+					    <a class="btn btn-default">0</a>
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-primary fixed-question-panel">
+						<div class="panel-heading">
+							What is the differences between templates and generics?
+						</div>
+						<div class="panel-body">
+							Hi! There is templates in C++, and Generics in Java. They do simillar things, but what is the difference..
+						</div>
+					</div>
+					<span>
+						<a href="#" class="btn btn-primary" type="button">
+							Answers <span class="badge">3</span>
+						</a>
+						<span class="tag-list">
+							<ul class="list-inline">
+								<li>Tags:</li>
+								<li><a href="#">Java</a></li>
+								<li><a href="#">C++</a></li>
+								<li><a href="#">Templates</a></li>
+								<li><a href="#">Generics</a></li>
+							</ul>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-body fixed-panel">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#" class="thumbnail fixed-thumbnail">
+						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
+					</a>
+					<div><a href="#"><h4>Mr.Red</h4></a></div>
+					<ul class="nav nav-tabs">
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+					    <a class="btn btn-default">0</a>
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-primary fixed-question-panel">
+						<div class="panel-heading">
+							What is the differences between templates and generics?
+						</div>
+						<div class="panel-body">
+							Hi! There is templates in C++, and Generics in Java. They do simillar things, but what is the difference..
+						</div>
+					</div>
+					<span>
+						<a href="#" class="btn btn-primary" type="button">
+							Answers <span class="badge">3</span>
+						</a>
+						<span class="tag-list">
+							<ul class="list-inline">
+								<li>Tags:</li>
+								<li><a href="#">Java</a></li>
+								<li><a href="#">C++</a></li>
+								<li><a href="#">Templates</a></li>
+								<li><a href="#">Generics</a></li>
+							</ul>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block pagination %}
+<!--Pagination -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<nav>
+			  <ul class="pagination pagination-lg">
+			    <li>
+			      <a href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li>
+			      <a href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+</div>
+{% endblock %}

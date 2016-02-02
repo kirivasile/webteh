@@ -25,7 +25,7 @@ Question
 					<a href="#" class="thumbnail fixed-thumbnail">
 						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
 					</a>
-					<div><a href="#"><h4>Mr.Red</h4></a></div>
+					<div><a href="#"><h4>{{ question.author.user.username }}</h4></a></div>
 					<ul class="nav nav-tabs">
 					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
 					    <a class="btn btn-default">0</a>
@@ -35,23 +35,23 @@ Question
 				<div class="col-md-9">
 					<div class="panel panel-primary fixed-question-panel">
 						<div class="panel-heading">
-							What is the differences between templates and generics?
+							{{ question.header }}
 						</div>
 						<div class="panel-body">
-							Hi! There is templates in C++, and Generics in Java. They do simillar things, but what is the difference..
+							{{ question.value }}
+							Time: {{ question.timestamp }}
 						</div>
 					</div>
 					<span>
 						<a href="#" class="btn btn-primary" type="button">
-							Answers <span class="badge">3</span>
+							Answers <span class="badge">{{ question.answers.all | length }}</span>
 						</a>
 						<span class="tag-list">
 							<ul class="list-inline">
 								<li>Tags:</li>
-								<li><a href="#">Java</a></li>
-								<li><a href="#">C++</a></li>
-								<li><a href="#">Templates</a></li>
-								<li><a href="#">Generics</a></li>
+								{% for tag in question.tags.all %}
+									<li><a href="#"> {{ tag.name }} </a></li>
+								{% endfor %}
 							</ul>
 						</span>
 					</span>
@@ -65,6 +65,39 @@ Question
 		<h2>Answers:</h2>
 	</div>
 
+	{% for answer in question.answers.all %}
+	<div class="panel panel-primary">
+		<div class="panel-body fixed-panel">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#" class="thumbnail fixed-thumbnail">
+						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
+					</a>
+					<div><a href="#"><h4>{{ answer.author.user.username }}</h4></a></div>
+					<ul class="nav nav-tabs">
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+					    <a class="btn btn-default">0</a>
+					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div class="panel panel-primary fixed-question-panel">
+						<div class="panel-body">
+							{{ answer.value }}
+						</div>
+					</div>
+					<div class="checkbox">
+			        	<label>
+			            	<input type="checkbox">Correct
+			        	</label>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+	<!--
 	<div class="panel panel-primary">
 		<div class="panel-body fixed-panel">
 			<div class="row">
@@ -124,6 +157,7 @@ Question
 			</div>
 		</div>
 	</div>
+	-->
 </div>
 {% endblock %}
 

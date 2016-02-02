@@ -16,7 +16,7 @@
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><font size="4">{{ request.user.username }}</font></a></li>
 		<li><a href="#"><font size="4">Settings</font></a></li>
-		<li><a href="auth/logout/"><font size="4">Log out</font></a></li>
+		<li><a href="{% url 'my_logout' %}"><font size="4">Log out</font></a></li>
 	</ul>
 </div>
 {% else %}
@@ -28,7 +28,7 @@
 	</form>
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><font size="4">Sign up</font></a></li>
-		<li><a href="/login/"><font size="4">Log in</font></a></li>
+		<li><a href="{% url 'my_login' %}"><font size="4">Log in</font></a></li>
 	</ul>
 </div>
 {% endif %}
@@ -40,10 +40,10 @@
 	<div class="row">
 		<div class="col-md-5" style="text-align: right;">
 			<span class="header-name">
-				<h1>New Questions</h1>
+				<h1>{{ header_value }}</h1>
 			</span>
 			<span class="header-name">
-				<a href="#"><h4>Hot Questions</h4></a>
+				<a href="{% url another_header_link %}"><h4>{{ another_header_value }}</h4></a>
 			</span>
 		</div>
 	</div>
@@ -53,6 +53,7 @@
 {% block body %}
 <!-- Questions -->
 <div class="col-md-8">
+	{% for question in question_data %}
 	<div class="panel panel-primary">
 		<div class="panel-body fixed-panel">
 			<div class="row">
@@ -60,7 +61,7 @@
 					<a href="#" class="thumbnail fixed-thumbnail">
 						<img src="http://cs625826.vk.me/v625826805/4650b/MHjd3Pf2nYw.jpg">
 					</a>
-					<div><a href="#"><h4>Mr.Red</h4></a></div>
+					<div><a href="#"><h4>{{ question.author.user.username }}</h4></a></div>
 					<ul class="nav nav-tabs">
 					    <a class="btn btn-default"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
 					    <a class="btn btn-default">0</a>
@@ -70,23 +71,23 @@
 				<div class="col-md-9">
 					<div class="panel panel-primary fixed-question-panel">
 						<div class="panel-heading">
-							<a href="/question/" style="color: white;">What is the differences between templates and generics?</a>
+							<a href="{% url 'question' %}?id={{question.id}}" style="color: white;">{{ question.header }}</a>
 						</div>
 						<div class="panel-body">
-							Hi! There is templates in C++, and Generics in Java. They do simillar things, but what is the difference..
+							{{ question.value }}
+							Time: {{ question.timestamp }}
 						</div>
 					</div>
 					<span>
 						<a href="#" class="btn btn-primary" type="button">
-							Answers <span class="badge">3</span>
+							Answers <span class="badge">{{ question.answers.all | length }}</span>
 						</a>
 						<span class="tag-list">
 							<ul class="list-inline">
 								<li>Tags:</li>
-								<li><a href="#">Java</a></li>
-								<li><a href="#">C++</a></li>
-								<li><a href="#">Templates</a></li>
-								<li><a href="#">Generics</a></li>
+								{% for tag in question.tags.all %}
+									<li><a href="/?tag={{ tag.name | urlencode }}"> {{ tag.name }} </a></li>
+								{% endfor %}
 							</ul>
 						</span>
 					</span>
@@ -94,7 +95,9 @@
 			</div>
 		</div>
 	</div>
+	{% endfor %}	
 
+	<!--
 	<div class="panel panel-primary">
 		<div class="panel-body fixed-panel">
 			<div class="row">
@@ -177,7 +180,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 {% endblock %}
 

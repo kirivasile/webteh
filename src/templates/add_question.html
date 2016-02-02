@@ -6,36 +6,35 @@ Add a new question
 
 {% block body %}
 <div class="col-md-8">
-	<form class="form-horizontal">
-		<fieldset>
-			<div class="alert alert-dismissible alert-danger">
-					<button type="button" class="close" data-dismiss="alert">×</button>
-					The red inputs are mandatory to fill in.
-				</div>
-			<div class="form-group has-error">
-			    <label for="inputTitle" class="col-md-1 control-label"><h4>Title</h4></label>
-			    <div class="col-md-10">
-			    	<input type="text" class="form-control inputInfo" id="inputTitle" placeholder="Enter the title">
-			    </div>
+	<form class="form-horizontal" method="post">
+		{% csrf_token %}
+		    <div class="form-group">
+		    	<label for="{{ form.title.id_for_label }}" class="col-md-1 control-label"><h4>Title</h4></label>
+		    	<div class="col-md-10">
+		    		{{ form.title }}
+		    	</div>
 		    </div>
 		    <div class="form-group">
-		    	<label for="inputText" class="col-md-1 control-label"><h4>Text</h4></label>
+		    	<label for="{{ form.text.id_for_label }}" class="col-md-1 control-label"><h4>Text</h4></label>
 		    	<div class="col-md-10">
-        			<textarea class="form-control inputInfo" rows="10" id="inputText" id="textArea" placeholder="Enter your question here"></textarea>
-        		</div>
-    		</div>
-    		<div class="form-group">
-			    <label for="inputTags" class="col-md-1 control-label"><h4>Tags</h4></label>
-			    <div class="col-md-10">
-			    	<input type="text" class="form-control inputInfo" id="inputTags" placeholder="Enter the tags">
-			    </div>
+		    		{{ form.text }}
+		    	</div>
 		    </div>
-		</fieldset>
+		    <div class="form-group">
+		    	<label for="{{ form.tags.id_for_label }}" class="col-md-1 control-label"><h4>Tags</h4></label>
+		    	<div class="col-md-10">
+		    		{{ form.tags }}
+		    	</div>
+		    </div>
+			<div class="col-md-10 col-md-offset-1">
+				<span><a href="/" class="btn btn-default">Cancel</a></span>
+				<span><input type="submit" class="btn btn-primary" value="Submit"></span>		
+			</div>    
 	</form>
-	<div class="col-md-10 col-md-offset-1">
+	<!--<div class="col-md-10 col-md-offset-1">
 		<span><a href="#" class="btn btn-default">Cancel</a></span>
 		<span><a href="#" class="btn btn-primary">Submit</a></span>
-	</div>
+	</div>-->
 </div>
 {% endblock %}
 
